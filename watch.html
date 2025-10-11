@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watch </title>
+</head>
+<link rel="stylesheet" href="watch.css">
+<body>
+    
+    <div class="container">
+
+        <div class="watch">
+
+
+            <div class="container">
+                <div class="first">
+                    <div class="hours">07</div>
+                    <div class="colon">:</div>
+                    <div class="min">13</div>
+
+                </div>
+                <div class="second">
+                <div class="sec">44</div>
+                <div class="Am">Am</div>
+                </div>
+           
+            <div class="third">
+
+            <div class="day">Tuesday</div>,
+
+            <div class="date">26</div>,
+           
+            <div class="month">sep</div>,
+            <div class="year">2025</div>
+            </div>
+            </div>
+             </div>
+
+        </div>
+
+    </div>
+
+    <script>
+  const hoursEl = document.querySelector(".hours");
+    const minutesEl = document.querySelector(".min");
+    const secondsEl = document.querySelector(".sec");
+    const amPmEl = document.querySelector(".Am");
+    const dayEl = document.querySelector(".day");
+    const dateEl = document.querySelector(".date");
+    const monthEl = document.querySelector(".month");
+    const yearEl = document.querySelector(".year");
+
+    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+    function updateTime() {
+      const now = new Date();
+
+      let hours = now.getHours();
+      const minutes = now.getMinutes();
+      const seconds = now.getSeconds();
+
+      const amPm = hours >= 12 ? "PM" : "AM";
+      hours = hours % 12 || 12;
+
+      hoursEl.textContent = String(hours).padStart(2, '0');
+      minutesEl.textContent = String(minutes).padStart(2, '0');
+      secondsEl.textContent = String(seconds).padStart(2, '0');
+      amPmEl.textContent = amPm;
+
+      dayEl.textContent = days[now.getDay()];
+      dateEl.textContent = now.getDate();
+      monthEl.textContent = months[now.getMonth()];
+      yearEl.textContent = now.getFullYear();
+    }
+
+    setInterval(updateTime, 1000);
+    updateTime(); // run immediately
+
+
+
+    </script>
+</body>
+</html>
